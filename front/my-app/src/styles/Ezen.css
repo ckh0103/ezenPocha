@@ -1,0 +1,393 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #333; /* Dark background like the image */
+  color: #f0f0f0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #2a2a2a; /* Slightly lighter than body for the main app area */
+}
+
+/* TopBar Styles */
+.top-bar {
+  background-color: #1a1a1a;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  height: 60px; /* Fixed height for top bar */
+}
+
+.top-bar .logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #4CAF50; /* Greenish color like in the image */
+}
+
+.top-bar nav span {
+  margin: 0 15px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+.top-bar nav span:hover {
+  color: #ddd;
+}
+
+.top-bar .table-number {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: orange;
+}
+
+
+/* Main Content Area */
+.main-content {
+  display: flex;
+  flex-grow: 1; /* Takes remaining height */
+  overflow: auto; /* Prevent overall page scroll, individual panes can scroll */
+ 
+}
+
+/* Sidebar가 있을 때와 없을 때 content-area 너비 조정 */
+.main-content > .sidebar + .content-area { /* Sidebar 다음에 content-area가 올 때 */
+  flex-grow: 1; /* Sidebar를 제외한 나머지 공간 차지 */
+}
+.main-content > .content-area { /* Sidebar가 없을 때 (예: 게임 뷰) */
+  width: 100%; /* 전체 너비 차지 */
+  flex-grow: 1; /* 혹시 모를 상황 대비 */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 200px;
+  background-color: #2c2c2e; /* Darker than menu grid */
+  padding: 20px 0;
+  border-right: 1px solid #444;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-bottom: 1px solid #3a3a3c;
+}
+
+.sidebar li:hover {
+  background-color: #3a3a3c;
+}
+
+.sidebar li.active {
+  background-color: #e67e22; /* Orange highlight */
+  color: #fff;
+  font-weight: bold;
+}
+
+.menu-item {
+  background-color: #444;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item img {
+  width: 100%;
+  height: 120px; /* Fixed height for consistency */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.menu-item .item-name {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #f0f0f0;
+}
+
+.menu-item .item-price {
+  font-size: 0.9em;
+  color: #e67e22; /* Orange for price */
+}
+
+/* OrderSummary Styles */
+.order-summary {
+  width: 350px; /* Fixed width for order summary */
+  background-color: #252525; /* Darkest pane */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #444;
+  /* background similar to image: dark brick wall */
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), /* Dark overlay */
+    repeating-linear-gradient(45deg, #3a3a3a, #3a3a3a 10px, #303030 10px, #303030 20px); /* Diagonal lines for texture */
+}
+
+.order-summary h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  color: #fff;
+  border-bottom: 1px solid #555;
+  padding-bottom: 10px;
+}
+
+.order-list-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.5fr; /* Name, Qty, Price, Remove */
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #555;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #bbb;
+}
+.order-list-header span:nth-child(2),
+.order-list-header span:nth-child(3) {
+  text-align: center;
+}
+
+
+.order-list {
+  flex-grow: 1;
+  overflow-y: auto; /* Scroll for many items */
+  margin-bottom: 15px;
+}
+.order-list .empty-order {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
+
+.order-list-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.5fr; /* Match header */
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #404040;
+  font-size: 0.9em;
+}
+.order-list-item:last-child {
+  border-bottom: none;
+}
+
+.order-item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls button {
+  background-color: #555;
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+  line-height: 18px; /* Center text */
+}
+.quantity-controls button:hover {
+  background-color: #666;
+}
+
+.order-item-price {
+  text-align: right;
+  padding-right: 5px;
+}
+.remove-item {
+  background-color: transparent;
+  color: #aaa;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  padding: 0 5px;
+  text-align: center;
+}
+.remove-item:hover {
+  color: #ff6b6b;
+}
+
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 0;
+  border-top: 1px solid #555;
+  margin-top: auto; /* Push to bottom if content is short */
+}
+
+.order-button, .clear-button {
+  background-color: #c84e0f; /* Orange/Brown button */
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.order-button:hover {
+  background-color: #e67e22;
+}
+.order-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.clear-button {
+  background-color: #777;
+}
+.clear-button:hover {
+  background-color: #888;
+}
+.clear-button:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+
+
+/* 기존 MenuGrid 스타일과 충돌하지 않도록 content-area 내부에서만 적용되도록 하거나,
+   GameSelectionPage가 MenuGrid와 동일한 flex-grow를 가지도록 조정.
+   위에서는 GameSelectionPage가 content-area를 채우도록 함.
+*/
+.content-area > .menu-grid {
+    flex-grow: 1; /* 기존 MenuGrid가 content-area를 채우도록 */
+    /* 기존 MenuGrid 스타일 유지 */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 20px;
+    overflow-y: auto;
+}
+
+
+/* Welcome Modal Styles */
+.welcome-modal-content {
+  background-color: #333;
+  color: #f0f0f0;
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-modal-content h2 {
+  color: #e67e22; /* Orange highlight */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.welcome-modal-content p {
+  margin-bottom: 25px;
+  color: #bbb;
+}
+
+.welcome-form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.welcome-form-group label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.welcome-form-group input {
+  width: 100px;
+  padding: 8px;
+  font-size: 1.2em;
+  text-align: center;
+  background-color: #555;
+  border: 1px solid #777;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* For Webkit browsers like Chrome/Safari to style number input arrows */
+.welcome-form-group input::-webkit-outer-spin-button,
+.welcome-form-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* For Firefox */
+.welcome-form-group input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.welcome-confirm-btn {
+  background-color: #e67e22; /* Orange button */
+  color: white;
+  border: none;
+  padding: 12px 0; /* 높이감 있게 */
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.welcome-confirm-btn:hover {
+  background-color: #d35400;
+}
+
+.menu-item.disabled {
+    opacity: 0.6; /* 아이템을 반투명하게 만듦 */
+    cursor: not-allowed; /* 마우스 커서를 '금지' 모양으로 변경 */
+    filter: grayscale(80%); /* 이미지를 흑백에 가깝게 변경 */
+}
+
+/* disabled 상태일 때는 호버 효과를 없앰 */
+.menu-item.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- END OF FILE Ezen.css --- */

@@ -1,0 +1,65 @@
+/* GameSelectionPage Styles */
+.game-selection-page {
+  flex-grow: 1; /* content-area 내부에서 남은 공간을 채움 */
+  padding: 120px;
+  display: flex;
+  justify-content: center; /* 게임 아이템들을 중앙 정렬 (가로) */
+  align-items: center; /* 게임 아이템들을 중앙 정렬 (세로) */
+  gap: 100px; /* 게임 아이템 간 간격 */
+  flex-wrap: wrap; /* 아이템이 많을 경우 다음 줄로 넘김 */
+  overflow-y: auto; /* 내용이 많을 경우 스크롤 */
+  /* 어두운 벽돌 배경 */
+  
+  background-size: 60px 30px, 60px 30px, 120px 60px, 120px 60px; /* 벽돌 크기 및 엇갈림 설정 */
+  background-position: 0 0, 0 0, 30px 15px, 30px 15px; /* 엇갈림 시작 위치 */
+}
+
+.game-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.game-item:hover {
+  transform: scale(1.05);
+}
+
+.game-item-image {
+  width: 150px; /* 이미지 크기 조절 */
+  height: 150px;
+  object-fit: contain; /* 또는 cover, 필요에 따라 조절 */
+  margin-bottom: 15px;
+  border-radius: 8px; /* 이미지 모서리 둥글게 (선택 사항) */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* 이미지 그림자 효과 */
+}
+
+.game-item-name-tag {
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px; /* 타원형 태그 */
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item.disabled {
+    opacity: 0.6; /* 아이템을 반투명하게 만듦 */
+    cursor: not-allowed; /* 마우스 커서를 '금지' 모양으로 변경 */
+    filter: grayscale(80%); /* 이미지를 흑백에 가깝게 변경 */
+}
+
+/* disabled 상태일 때는 호버 효과를 없앰 */
+.menu-item.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* 기존 MenuGrid 스타일과 충돌하지 않도록 content-area 내부에서만 적용되도록 하거나,
+   GameSelectionPage가 MenuGrid와 동일한 flex-grow를 가지도록 조정.
+   위에서는 GameSelectionPage가 content-area를 채우도록 함.
+*/

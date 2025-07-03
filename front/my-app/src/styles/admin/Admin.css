@@ -1,0 +1,515 @@
+/* Admin Page Styles */
+.admin-app {
+  display: flex;
+  min-height: calc(100vh - 41px); /* 100vh - 임시 네비게이션 높이 */
+  background-color: #f0f2f5; /* 밝은 회색 배경 */
+}
+
+.admin-sidebar {
+  width: 260px;
+  background-color: #2c3e50; /* 어두운 남색 계열 */
+  color: #ecf0f1; /* 밝은 텍스트 색상 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar-logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #34e79a; /* 로고 메인 색상 (녹색 계열) */
+}
+.admin-sidebar-logo .admin-logo-subtitle {
+  display: block;
+  font-size: 0.6em;
+  color: #bdc3c7; /* 로고 서브 텍스트 */
+  margin-top: 5px;
+}
+
+
+.admin-search-bar {
+  display: flex;
+  margin-bottom: 30px;
+}
+.admin-search-bar input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #34495e;
+  border-radius: 4px 0 0 4px;
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+.admin-search-bar input::placeholder {
+  color: #95a5a6;
+}
+.admin-search-bar button {
+  padding: 8px 10px;
+  border: none;
+  background-color: #3498db; /* 검색 버튼 색상 */
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.admin-sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-sidebar-nav li a {
+  display: block;
+  padding: 12px 15px;
+  color: #bdc3c7; /* 네비게이션 링크 색상 */
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.admin-sidebar-nav li a:hover {
+  background-color: #34495e; /* 호버 시 배경 */
+  color: #ffffff;
+}
+.admin-sidebar-nav li a.active {
+  background-color: #3498db; /* 활성 링크 배경 */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.admin-main-content {
+  flex-grow: 1;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.admin-page-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #333;
+}
+.admin-add-btn, .admin-edit-btn, .admin-delete-btn, .btn-save, .btn-cancel {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.admin-add-btn {
+  background-color: #27ae60; /* 등록 버튼 녹색 계열 */
+  color: white;
+}
+.admin-add-btn:hover {
+  background-color: #229954;
+}
+
+/* Category Tabs for Admin */
+.admin-category-tabs {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+  background-color: #fff; /* 이미지의 베이지색 탭 배경 대체 */
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.admin-category-tabs button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #555;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.admin-category-tabs button:hover {
+  background-color: #efefef;
+}
+.admin-category-tabs button.active {
+  background-color: #3498db; /* 활성 탭 색상 */
+  color: white;
+  border-color: #3498db;
+  font-weight: bold;
+}
+
+/* Admin Menu Grid */
+.admin-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 이미지와 유사하게 넓게 */
+  gap: 20px;
+}
+
+.admin-menu-item {
+  background-color: #34495e; /* 이미지의 어두운 남색 아이템 배경 */
+  color: #ecf0f1;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.admin-menu-item img {
+  width: 100%;
+  height: 150px; /* 이미지 높이 증가 */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.admin-menu-item-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+}
+.admin-menu-item-info p {
+  margin: 3px 0;
+  font-size: 0.9em;
+}
+.admin-menu-item-category {
+  font-size: 0.8em !important;
+  color: #bdc3c7;
+}
+
+.admin-menu-item-actions {
+  margin-top: auto; /* 버튼들을 하단에 위치 */
+  padding-top: 10px;
+  border-top: 1px solid #4a6074;
+  display: flex;
+  justify-content: flex-end; /* 버튼 오른쪽 정렬 */
+  gap: 8px;
+}
+.admin-edit-btn {
+  background-color: #f39c12; /* 수정 버튼 주황색 계열 */
+  color: white;
+}
+.admin-edit-btn:hover {
+  background-color: #e67e22;
+}
+.admin-delete-btn {
+  background-color: #e74c3c; /* 삭제 버튼 빨간색 계열 */
+  color: white;
+}
+.admin-delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Modal Styles (MenuFormModal) */
+.modal-overlay { /* 이미 Ezen.css에 유사한 스타일이 있다면 병합 또는 선택 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content.admin-menu-form-modal { /* 특정 모달 스타일 */
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #333; /* 모달 내부 텍스트 색상 */
+}
+.admin-menu-form-modal h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+.admin-menu-form-modal .form-group {
+  margin-bottom: 18px;
+}
+.admin-menu-form-modal label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.admin-menu-form-modal input[type="text"],
+.admin-menu-form-modal input[type="number"],
+.admin-menu-form-modal select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+.admin-menu-form-modal .form-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn-save {
+  background-color: #27ae60; /* 저장 버튼 */
+  color: white;
+}
+.btn-save:hover {
+  background-color: #229954;
+}
+.btn-cancel {
+  background-color: #7f8c8d; /* 취소 버튼 */
+  color: white;
+}
+.btn-cancel:hover {
+  background-color: #6c7a7d;
+}
+
+/* --- START OF FILE Ezen.css (추가 또는 수정) --- */
+/* ... (기존 Admin Page Styles 유지) ... */
+
+/* Admin Dashboard & Table Status Card Styles */
+.admin-dashboard {
+  /* admin-main-content 패딩이 있으므로 여기서는 추가 패딩 불필요할 수 있음 */
+}
+
+.table-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 이미지처럼 2~3열 정도 */
+  gap: 20px;
+}
+
+.table-status-card {
+  background-color: #ffffff; /* 카드 배경 흰색 */
+  border: 1px solid #e0e0e0; /* 연한 회색 테두리 */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.table-status-card.empty {
+  background-color: #f9f9f9; /* 비어있는 테이블은 약간 다른 배경 */
+}
+
+.table-status-card .card-header {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f9fc; /* 헤더 배경 살짝 다르게 */
+}
+
+.table-status-card .card-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.table-status-card .status-info {
+  font-size: 0.9em;
+}
+.table-status-card .status-info .status-empty {
+  color: #95a5a6; /* 비었음 텍스트 색 */
+  font-weight: bold;
+}
+.table-status-card .status-info .status-occupied {
+  color: #2980b9; /* 남/여 표시 파란색 계열 */
+  font-weight: bold;
+}
+.table-status-card .status-info .status-unknown {
+  color: #7f8c8d;
+}
+
+
+.table-status-card .clear-table-btn {
+  background-color: #e74c3c; /* 삭제 버튼 빨간색 */
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.table-status-card .clear-table-btn:hover {
+  background-color: #c0392b;
+}
+
+
+.table-status-card .card-body {
+  padding: 15px;
+  flex-grow: 1;
+  min-height: 200px;
+  background-color: #fff; /* 카드 바디 배경을 흰색으로 명확히 */
+}
+
+.table-status-card .card-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  color: #000000; /* 테이블 전체 기본 텍스트 색상을 검정으로 설정 */
+}
+
+.table-status-card .card-body th,
+.table-status-card .card-body td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0; /* 구분선 색상 약간 연하게 */
+  color: #000000; /* th, td 텍스트 색상도 검정으로 명시 (상속받지만 확실히) */
+}
+.table-status-card .card-body th {
+  background-color: #f2f2f2; /* th 배경색 살짝 밝게 (기존 #f9f9f9도 괜찮음) */
+  /* color: #333; */ /* th 텍스트는 약간 어두운 회색으로 해도 가독성 좋음, 검정색 유지도 가능 */
+  font-weight: bold;
+}
+.table-status-card .card-body tr:last-child td {
+  border-bottom: none;
+}
+
+.table-status-card .card-body td:nth-child(1) { width: 10%; text-align: center; } /* No */
+.table-status-card .card-body td:nth-child(3) { width: 20%; text-align: center; } /* Quantity */
+.table-status-card .card-body td:nth-child(4) { width: 25%; text-align: right; } /* Price */
+
+/* 총액 부분 스타일 */
+.table-status-card .card-body tfoot td {
+    font-weight: bold;
+    color: #000000; /* 총액 텍스트 검정 */
+    background-color: burlywood; /* 총액 행 배경색 약간 다르게 */
+}
+
+.table-status-card .empty-message {
+  text-align: center;
+  color: #999;
+  font-size: 1em;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* 부모 .card-body의 높이를 채우도록 */
+}
+
+/* 호출 목록 섹션 전체 스타일 */
+.admin-calls-section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.admin-calls-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* ul 태그의 기본 여백과 점 제거 */
+.admin-calls-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 각 호출 항목(li) 스타일 (가장 중요!) */
+.admin-calls-section li {
+    display: flex; /* Flexbox를 사용하여 항목들을 가로로 배치 */
+    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 12px 5px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333; /* 글자색을 잘 보이도록 지정 */
+    font-size: 16px;
+}
+
+/* 마지막 항목의 밑줄은 제거 */
+.admin-calls-section li:last-child {
+    border-bottom: none;
+}
+
+/* '완료' 버튼 스타일 (기존 admin-delete-btn 재활용 또는 커스텀) */
+.admin-calls-section .admin-delete-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    /* 필요한 다른 스타일 추가 */
+}
+
+/* --- Table Overview Styles --- */
+
+.table-overview-grid {
+    display: grid;
+    /* 화면 크기에 따라 자동으로 2~3개씩 보이도록 설정 */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px; /* 카드 사이의 간격 */
+}
+
+.table-overview-card {
+    background-color: #333;
+    border-radius: 12px;
+    color: white;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px; /* 카드의 최소 높이 */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.table-overview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.table-overview-card .card-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.table-overview-card .gender-info {
+    font-size: 24px;
+    text-align: center;
+}
+
+.table-overview-card .gender-male {
+    color: #87CEFA; /* 하늘색 */
+}
+
+.table-overview-card .gender-female {
+    color: #F08080; /* 연분홍 */
+}
+
+.table-overview-card .gender-divider {
+    margin: 0 10px;
+}
+
+.table-overview-card .empty-info {
+    font-size: 48px;
+    color: #777;
+    letter-spacing: 10px;
+}
+
+.table-overview-card .card-footer {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFD700; /* 금색 */
+    border-top: 1px solid #555;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* 빈 테이블일 때 스타일 */
+.table-overview-card.empty {
+    background-color: #444; /* 더 어둡게 */
+}
+
+/* --- END OF FILE Admin.css --- */
